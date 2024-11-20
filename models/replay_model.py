@@ -2,7 +2,6 @@ import boto3
 
 dynamodb = boto3.resource("dynamodb", region_name="eu-north-1")
 table_name = "ReplayData"
-# table = dynamodb.Table(table_name)
 
 table = dynamodb.create_table(
     TableName=table_name,
@@ -10,19 +9,7 @@ table = dynamodb.create_table(
         {'AttributeName': 'battle_id', 'KeyType': 'HASH'},
     ],
     AttributeDefinitions=[
-        {'AttributeName': 'battle_id', 'AttributeType': 'S'},
-        {'AttributeName': 'winner', 'AttributeType': 'N'},
-    ],
-    GlobalSecondaryIndexes=[
-        {
-            'IndexName': 'WinnerIndex',
-            'KeySchema': [
-                {'AttributeName': 'winner', 'KeyType': 'HASH'},
-            ],
-            'Projection': {
-                'ProjectionType': 'ALL'
-            },
-        }
+        {'AttributeName': 'battle_id', 'AttributeType': 'S'}
     ],
     BillingMode='PAY_PER_REQUEST',
 )
