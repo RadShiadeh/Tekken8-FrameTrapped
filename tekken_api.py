@@ -13,9 +13,7 @@ def get_all_replays(url):
                   f"{res}\n")
             break
         
-        for r in res:
-            if r and (r["p1_name"].lower() == "glonki" or r["p2_name"].lower() == "glonki"):
-                replays.extend(res)
+        replays.extend(res)
             
         before = min(float(r["battle_at"]) for r in res) - 700
         if log % 10 == 0:
