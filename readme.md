@@ -2,8 +2,8 @@
 
 Wrote some code to collect ranked replay data from "wavu wank" api: https://wank.wavu.wiki/api
 
-**There are 13,481,323 replay data, with 344,144 players who have played at least one game of ranked**:
-- Replays are from November 8th to December 8th 2024
+**There are over 10 million replay data, with over 300k players who have played at least one game of ranked**:
+- Replays are from October 22nd to November 28th 2024
 - Ranked matches only
 
 **Data is put into 3 categories**:
