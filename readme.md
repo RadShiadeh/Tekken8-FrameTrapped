@@ -1,6 +1,6 @@
-## Tekken 8 replay stats -- October 22nd to November 28th
+## Tekken 8 ranked matches replay stats -- November 8th to December 8th 2024
 
-Wrote some code to collect ranked replay data from "wavu wank" api: https://wank.wavu.wiki/api
+Collected ranked replay data from "WAVU WANK" api: https://wank.wavu.wiki/api
 
 **There are 13,481,323 replay data, with 344,144 players who have played at least one game of ranked**:
 - Replays are from November 8th to December 8th 2024
