@@ -2,8 +2,8 @@
 
 Wrote some code to collect ranked replay data from "wavu wank" api: https://wank.wavu.wiki/api
 
-**There are over 10 million replay data, with over 300k players who have played at least one game of ranked**:
-- Replays are from October 22nd to November 28th 2024
+**There are 13,481,323 replay data, with 344,144 players who have played at least one game of ranked**:
+- Replays are from November 8th to December 8th 2024
 - Ranked matches only
 
 **Data is put into 3 categories**:
@@ -26,9 +26,9 @@ Wrote some code to collect ranked replay data from "wavu wank" api: https://wank
 **Character popularity**
 - Most popular characters at each category, expressed as a percentage
 
-![All Ranks](./pics/char_pop_all_ranks.png "character popularity, all ranks")
+![All Ranks](./pics/char_pop_all.png "character popularity, all ranks")
 
-![Fujin to Emperor](./pics/char_pop_Fujin_emp.png "char pop, Fujin to Emperor")
+![Fujin to Emperor](./pics/char_pop_fujin.png "char pop, Fujin to Emperor")
 
 ![God Ranks](./pics/char_pop_God.png "char pop, God Ranks")
 
@@ -36,11 +36,11 @@ Wrote some code to collect ranked replay data from "wavu wank" api: https://wank
 **Character Winrates**
 - Overall winrates of a character, for each category
 
-![All Ranks](./pics/char_win_rate_all.png "character winrates, all ranks")
+![All Ranks](./pics/char_winrate_all.png "character winrates, all ranks")
 
-![Fujin to Emperor](./pics/char_win_rate_fujin_emp.png "char winrates, Fujin to Emperor")
+![Fujin to Emperor](./pics/char_win_fujin.png "char winrates, Fujin to Emperor")
 
-![God Ranks](./pics/char_win_rate_god.png "char winrates, God Ranks")
+![God Ranks](./pics/char_win_god.png "char winrates, God Ranks")
 
 
 **Character head to head heatmap**
@@ -48,8 +48,8 @@ Wrote some code to collect ranked replay data from "wavu wank" api: https://wank
 - Example: Paul on the left and Law on the bottom with grid value x -> "Paul winn x% of matches against Law"
 
 
-![All Ranks](./pics/All-ranks.png "character head to heads, all ranks")
+![All Ranks](./pics/heatmap_all.png "character head to heads, all ranks")
 
-![Fujin to Emperor](./pics/Fujin-emperor.png "character head to heads, Fujin to Emperor")
+![Fujin to Emperor](./pics/heatmap_fujin.png "character head to heads, Fujin to Emperor")
 
-![God Ranks](./pics/God-ranks.png "character head to heads, God Ranks")
+![God Ranks](./pics/heatmap_god.png "character head to heads, God Ranks")

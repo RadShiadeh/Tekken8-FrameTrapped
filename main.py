@@ -132,14 +132,14 @@ def main():
     pl = Plot()  
     ingestor = Extractor()  
     
-    # new_data_time_start = datetime.now()
-    # print("getting latest data...")  
-    # new_data = ingestor.get_all_new_replays(url_replays, url_latest, latest)
+    new_data_time_start = datetime.now()
+    print("getting latest data...")  
+    new_data = ingestor.get_all_new_replays(url_replays, url_latest, latest)
     
-    # for nd in new_data:
-    #     data.append(nd)
+    for nd in new_data:
+        data.append(nd)
     
-    # print(f"collecting new enteries took: {datetime.now() - new_data_time_start}")
+    print(f"collecting new enteries took: {datetime.now() - new_data_time_start}")
     
     print(f"replay length is: {len(data)}")
 
@@ -205,12 +205,12 @@ def main():
     pl.plot_heatmap(matchup_winrates_fujin, playable_char_map, unused_idxs, "./pics/heatmap_fujin", "character head to head win rates, Fujin to Tekken Emperor")
     pl.plot_heatmap(matchup_winrates_god_ranks, playable_char_map, unused_idxs, "./pics/heatmap_god", "character head to head win rates, God ranks")
     
-    # update_timer = datetime.now()
-    # print(f"updating local enteries... {update_timer}")
-    # ingestor.update_local_json_replays(data_path, data)
-    # print(f"local data updated! took: {datetime.now() - update_timer}\n")
+    update_timer = datetime.now()
+    print(f"updating local enteries... {update_timer}")
+    ingestor.update_local_json_replays(data_path, data)
+    print(f"local data updated! took: {datetime.now() - update_timer}\n")
     
-    # print(f"done! whole process took: {datetime.now() - whole_process_timer}")
+    print(f"done! whole process took: {datetime.now() - whole_process_timer}")
 
 
 if __name__ == "__main__":
