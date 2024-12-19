@@ -4,25 +4,25 @@ class Transformer():
         super(Transformer, self).__init__(*args, **kwargs)
         
         
-    def filter_data_for_a_player(self, player_id, data, polaris_id=None):
+    def filter_data_for_a_player(self, player_id, data, user_id=None):
     
         res = []    
         for d in data:
-            if not polaris_id:
+            if not user_id:
                 if d["p1_name"].lower() == player_id.lower():
-                    polaris_id = d["p1_polaris_id"]
+                    user_id = d["p1_user_id"]
                 elif d["p2_name"].lower() == player_id.lower():
-                    polaris_id = d["p2_polaris_id"]
+                    user_id = d["p2_user_id"]
             else:
-                if d["p1_polaris_id"] == polaris_id:
+                if d["p1_user_id"] == user_id:
                     res.append(d)
-                elif d["p2_polaris_id"] == polaris_id:
+                elif d["p2_user_id"] == user_id:
                     res.append(d)
         
-        return res, polaris_id
+        return res, user_id
 
 
-    def find_all_replays_for_id(self, player_data, player_polaris_id): # my id is 5r4gQ4RNgNQ4
+    def find_all_replays_for_id(self, player_data, player_user_id): # my id is 5r4gQ4RNgNQ4
 
         max_index = 40
         most_used = [0] * (max_index + 1)
@@ -31,12 +31,12 @@ class Transformer():
         raw_data = []
 
         for d in player_data:
-            if d["p1_polaris_id"] == player_polaris_id:
+            if d["p1_user_id"] == player_user_id:
                 most_used[d["p1_chara_id"]] += 1
                 most_played_against[d["p2_chara_id"]] += 1
                 if d["winner"] == 1:
                     won += 1
-            elif d["p2_polaris_id"] == player_polaris_id:
+            elif d["p2_user_id"] == player_user_id:
                 most_used[d["p2_chara_id"]] += 1
                 most_played_against[d["p1_chara_id"]] += 1
                 if d["winner"] == 2:

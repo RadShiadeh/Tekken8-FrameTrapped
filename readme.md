@@ -45,7 +45,7 @@ Collected ranked replay data from "WAVU WANK" api: https://wank.wavu.wiki/api
 
 **Character head to head heatmap**
 - The character on the left is the winner
-- Example: Paul on the left and Law on the bottom with grid value x -> "Paul winn x% of matches against Law"
+- Example: Paul on the left and Law on the bottom with grid value x -> "Paul wins x % of matches against Law"
 
 
 ![All Ranks](./pics/heatmap_all.png "character head to heads, all ranks")

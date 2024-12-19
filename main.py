@@ -70,7 +70,7 @@ def main():
                 16: "Leo",
                 17: "Lars",
                 18: "Alisa",
-                19: "Caludio",
+                19: "Claudio",
                 20: "Shaheen",
                 21: "Nina",
                 22: "Lee",
@@ -91,7 +91,8 @@ def main():
                 37: "unknown6",
                 38: "Eddy", #eddy?
                 39: "Lidia",
-                40: "Heihachi"
+                40: "Heihachi",
+                41: "Clive"
             }
 
     reverse_char_map = {}
@@ -154,56 +155,56 @@ def main():
 
     print(f"There are {len(unique_ids)} unique players")
     
-    filtering_start = datetime.now()
-    print("Filtering and prepping data for visualisation...")
+    # filtering_start = datetime.now()
+    # print("Filtering and prepping data for visualisation...")
     
-    most_pop_data, _ = transform.find_char_popularity(data, playable_char_map)
-    char_usage_all_ranks, char_wins_all_ranks = transform.get_chars_global_winrates(data, playable_char_map)
-    indv_matchups = transform.get_chars_ind_matchups_winrates(data, playable_char_map, unused_idxs)
-    matchup_winrates = transform.head_to_head_char_win_rates(indv_matchups, playable_char_map, unused_idxs, reverse_char_map)
+    # most_pop_data, _ = transform.find_char_popularity(data, playable_char_map)
+    # char_usage_all_ranks, char_wins_all_ranks = transform.get_chars_global_winrates(data, playable_char_map)
+    # indv_matchups = transform.get_chars_ind_matchups_winrates(data, playable_char_map, unused_idxs)
+    # matchup_winrates = transform.head_to_head_char_win_rates(indv_matchups, playable_char_map, unused_idxs, reverse_char_map)
     
     
-    fujin_onwards_data = transform.filter_data_based_on_rank(data, reverse_rank_map["Fujin"], reverse_rank_map["Tekken Emperor"])
-    most_pop_fujin_onwards, _ = transform.find_char_popularity(fujin_onwards_data, playable_char_map)
-    char_usage_Fujin_onwards, char_wins_Fujin_onwards = transform.get_chars_global_winrates(fujin_onwards_data, playable_char_map)
-    indv_matchups_fujin = transform.get_chars_ind_matchups_winrates(fujin_onwards_data, playable_char_map, unused_idxs)
-    matchup_winrates_fujin = transform.head_to_head_char_win_rates(indv_matchups_fujin, playable_char_map, unused_idxs, reverse_char_map)
+    # fujin_onwards_data = transform.filter_data_based_on_rank(data, reverse_rank_map["Fujin"], reverse_rank_map["Tekken Emperor"])
+    # most_pop_fujin_onwards, _ = transform.find_char_popularity(fujin_onwards_data, playable_char_map)
+    # char_usage_Fujin_onwards, char_wins_Fujin_onwards = transform.get_chars_global_winrates(fujin_onwards_data, playable_char_map)
+    # indv_matchups_fujin = transform.get_chars_ind_matchups_winrates(fujin_onwards_data, playable_char_map, unused_idxs)
+    # matchup_winrates_fujin = transform.head_to_head_char_win_rates(indv_matchups_fujin, playable_char_map, unused_idxs, reverse_char_map)
     
-    god_rank_data = transform.filter_data_based_on_rank(data, reverse_rank_map["Tekken God"], reverse_rank_map["God of Destruction"])
-    most_pop_god_ranks, _ = transform.find_char_popularity(god_rank_data, playable_char_map)
-    char_usage_god_ranks, char_wins_god_ranks = transform.get_chars_global_winrates(god_rank_data, playable_char_map)
-    indv_matchups_god_ranks = transform.get_chars_ind_matchups_winrates(god_rank_data, playable_char_map, unused_idxs)
-    matchup_winrates_god_ranks = transform.head_to_head_char_win_rates(indv_matchups_god_ranks, playable_char_map, unused_idxs, reverse_char_map)
+    # god_rank_data = transform.filter_data_based_on_rank(data, reverse_rank_map["Tekken God"], reverse_rank_map["God of Destruction"])
+    # most_pop_god_ranks, _ = transform.find_char_popularity(god_rank_data, playable_char_map)
+    # char_usage_god_ranks, char_wins_god_ranks = transform.get_chars_global_winrates(god_rank_data, playable_char_map)
+    # indv_matchups_god_ranks = transform.get_chars_ind_matchups_winrates(god_rank_data, playable_char_map, unused_idxs)
+    # matchup_winrates_god_ranks = transform.head_to_head_char_win_rates(indv_matchups_god_ranks, playable_char_map, unused_idxs, reverse_char_map)
     
-    rank_data = transform.get_ranked_data(data)
+    # rank_data = transform.get_ranked_data(data)
     
-    print(f"filtering done, took {datetime.now() - filtering_start}")
+    # print(f"filtering done, took {datetime.now() - filtering_start}")
     
-    print("plotting and saving the output...")
+    # print("plotting and saving the output...")
     
-    pl.plot_data(most_pop_data, playable_char_map, unused_idxs, 
-                 f"Ranked Charactar Popularity Data % (all ranks), no. of replays: {sum(most_pop_data) // 2}", "./pics/char_pop_all", percentage=True)
+    # pl.plot_data(most_pop_data, playable_char_map, unused_idxs, 
+    #              f"Ranked Charactar Popularity Data % (all ranks), no. of replays: {sum(most_pop_data) // 2}", "./pics/char_pop_all", percentage=True)
     
-    pl.plot_rank_data(rank_data, rank_mapping, "./pics/rank_dist", True)
+    # pl.plot_rank_data(rank_data, rank_mapping, "./pics/rank_dist", True)
     
-    pl.plot_char_winrates(char_usage_all_ranks, char_wins_all_ranks, unused_idxs, playable_char_map,
-                          f"character winrate % sorted high to low, all ranks, data length: {sum(char_usage_all_ranks) // 2}", "./pics/char_winrate_all", True)
+    # pl.plot_char_winrates(char_usage_all_ranks, char_wins_all_ranks, unused_idxs, playable_char_map,
+    #                       f"character winrate % sorted high to low, all ranks, data length: {sum(char_usage_all_ranks) // 2}", "./pics/char_winrate_all", True)
     
-    pl.plot_data(most_pop_fujin_onwards, playable_char_map, unused_idxs, 
-                 f"Ranked Charactar Popularity %, Fujin to Tekken Emperor, data length: {sum(most_pop_fujin_onwards) // 2}", "./pics/char_pop_fujin", True)
+    # pl.plot_data(most_pop_fujin_onwards, playable_char_map, unused_idxs, 
+    #              f"Ranked Charactar Popularity %, Fujin to Tekken Emperor, data length: {sum(most_pop_fujin_onwards) // 2}", "./pics/char_pop_fujin", True)
     
-    pl.plot_char_winrates(char_usage_Fujin_onwards, char_wins_Fujin_onwards, unused_idxs, playable_char_map, 
-                          f"Global winrate %, Fujin to Tekken Emperor, data length: {sum(char_usage_Fujin_onwards) // 2}", "./pics/char_win_fujin", True)
+    # pl.plot_char_winrates(char_usage_Fujin_onwards, char_wins_Fujin_onwards, unused_idxs, playable_char_map, 
+    #                       f"Global winrate %, Fujin to Tekken Emperor, data length: {sum(char_usage_Fujin_onwards) // 2}", "./pics/char_win_fujin", True)
     
-    pl.plot_data(most_pop_god_ranks, playable_char_map, unused_idxs, 
-                 f"Ranked Charactar Popularity %, God Ranks, data length: {sum(most_pop_god_ranks) // 2}", "./pics/char_pop_God", True)
+    # pl.plot_data(most_pop_god_ranks, playable_char_map, unused_idxs, 
+    #              f"Ranked Charactar Popularity %, God Ranks, data length: {sum(most_pop_god_ranks) // 2}", "./pics/char_pop_God", True)
     
-    pl.plot_char_winrates(char_usage_god_ranks, char_wins_god_ranks, unused_idxs, playable_char_map, 
-                          f"God Ranks winrate %, total data: {sum(char_usage_god_ranks) // 2}", "./pics/char_win_god", True)
+    # pl.plot_char_winrates(char_usage_god_ranks, char_wins_god_ranks, unused_idxs, playable_char_map, 
+    #                       f"God Ranks winrate %, total data: {sum(char_usage_god_ranks) // 2}", "./pics/char_win_god", True)
     
-    pl.plot_heatmap(matchup_winrates, playable_char_map, unused_idxs, "./pics/heatmap_all", "character head to head win rates, all ranks")
-    pl.plot_heatmap(matchup_winrates_fujin, playable_char_map, unused_idxs, "./pics/heatmap_fujin", "character head to head win rates, Fujin to Tekken Emperor")
-    pl.plot_heatmap(matchup_winrates_god_ranks, playable_char_map, unused_idxs, "./pics/heatmap_god", "character head to head win rates, God ranks")
+    # pl.plot_heatmap(matchup_winrates, playable_char_map, unused_idxs, "./pics/heatmap_all", "character head to head win rates, all ranks")
+    # pl.plot_heatmap(matchup_winrates_fujin, playable_char_map, unused_idxs, "./pics/heatmap_fujin", "character head to head win rates, Fujin to Tekken Emperor")
+    # pl.plot_heatmap(matchup_winrates_god_ranks, playable_char_map, unused_idxs, "./pics/heatmap_god", "character head to head win rates, God ranks")
     
     update_timer = datetime.now()
     print(f"updating local enteries... {update_timer}")
