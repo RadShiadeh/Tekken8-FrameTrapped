@@ -24,7 +24,7 @@ class Transformer():
 
     def find_all_replays_for_id(self, player_data, player_user_id): # my id is 5r4gQ4RNgNQ4
 
-        max_index = 40
+        max_index = 41
         most_used = [0] * (max_index + 1)
         most_played_against = [0] * (max_index + 1)
         won = 0
@@ -89,7 +89,7 @@ class Transformer():
     
     def find_char_popularity(self, data, playable_char_map):
     
-        char_data = [0] * 41
+        char_data = [0] * 42
         not_found = set()
         flag = False
         for d in data:
