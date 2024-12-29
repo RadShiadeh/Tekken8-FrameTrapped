@@ -4,7 +4,13 @@ from transform import Transformer
 from plot import Plot
 from ingestion import Extractor
 from datetime import datetime
+import pandas as pd
 
+
+def update_local_json_replays(outpath, data, latest, latest_path):
+    pd.DataFrame.to_json(data, outpath, "records")
+    with open(latest_path, 'w') as f:
+        f.write(str(latest))
 
 def main():
     
@@ -119,7 +125,7 @@ def main():
     else:
         print("no existing data found")
 
-    
+    data = pd.DataFrame(data)
     latest = None
     data_path_l = "./data/latest_replay.txt"
     if os.path.exists(data_path_l) and os.path.isfile(data_path_l):
@@ -135,22 +141,26 @@ def main():
     
     new_data_time_start = datetime.now()
     print("getting latest data...")  
-    new_data = ingestor.get_all_new_replays(url_replays, url_latest, latest)
+    new_data, latest = ingestor.get_all_new_replays(url_replays, url_latest, latest)
     
-    for nd in new_data:
-        data.append(nd)
+    
+    data = pd.concat([data, new_data])
     
     print(f"collecting new enteries took: {datetime.now() - new_data_time_start}")
     
     print(f"replay length is: {len(data)}")
 
     unique_ids = set()
-    for d in data:
-        if d["p1_polaris_id"] not in unique_ids:
-            unique_ids.add(d["p1_polaris_id"])
-        
-        if d["p2_polaris_id"] not in unique_ids:
-            unique_ids.add(d["p2_polaris_id"])
+    p1_unique_ids = data["p1_user_id"].unique()
+    p2_unique_ids = data["p2_user_id"].unique()
+    
+    for v in p1_unique_ids:
+        if v not in unique_ids:
+            unique_ids.add(v)
+    
+    for v in p2_unique_ids:
+        if v not in unique_ids:
+            unique_ids.add(v)
 
 
     print(f"There are {len(unique_ids)} unique players")
@@ -208,7 +218,7 @@ def main():
     
     update_timer = datetime.now()
     print(f"updating local enteries... {update_timer}")
-    ingestor.update_local_json_replays(data_path, data)
+    update_local_json_replays(data_path, data, latest, "./data/latest_replay.txt")
     print(f"local data updated! took: {datetime.now() - update_timer}\n")
     
     print(f"done! whole process took: {datetime.now() - whole_process_timer}")

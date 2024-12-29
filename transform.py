@@ -88,7 +88,7 @@ class Transformer():
     
     
     def find_char_popularity(self, data, playable_char_map):
-    
+        
         char_data = [0] * 42
         not_found = set()
         flag = False

@@ -2,7 +2,7 @@ import json
 import requests
 from bs4 import BeautifulSoup
 import re
-import os
+import pandas as pd
 
 
 class Extractor():
@@ -17,6 +17,7 @@ class Extractor():
             break_point = latest
         
         before = self.get_latest_api_entry(url_latest)
+        latest_entry = before
         if before == -1:
             raise Exception("failed to get the latest 'before' parameter")
         
@@ -39,7 +40,11 @@ class Extractor():
             
             log += 1
         
-        return replays
+        replays_df = pd.DataFrame(replays)
+        replays_df.drop(columns=["battle_at", "battle_type", "p1_rank","battle_id", "game_version", "p1_area_id", "p2_area_id", "p1_lang", "p2_lang", "p1_power", "p2_power", "p1_rating_before", "p2_rating_before", "p2_rating_change", "p1_rating_change", "p1_region_id", "p2_region_id", "p1_rounds", "p2_rounds"], axis=1)
+        
+        
+        return replays_df, latest_entry
             
 
 
@@ -67,14 +72,6 @@ class Extractor():
         max_entry = 0
         
         if m:
-            max_entry = m.group(1)
-
-        with open("./data/latest_replay.txt", 'w') as f:
-            f.writelines(max_entry)        
+            max_entry = m.group(1)   
         
         return int(max_entry) if int(max_entry) > 0 else -1
-
-
-    def update_local_json_replays(self, outpath, data):
-        with open(outpath, 'w') as f:
-            json.dump(data, f, indent=4)
