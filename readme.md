@@ -28,7 +28,7 @@ Wrote some code to collect ranked replay data from "wavu wank" api: https://wank
 
 ![All Ranks](./pics/char_pop_all.png "character popularity, all ranks")
 
-![Fujin to Emperor](./pics/char_pop_Fujin.png "char pop, Fujin to Emperor")
+![Fujin to Emperor](./pics/char_pop_fujin.png "char pop, Fujin to Emperor")
 
 ![God Ranks](./pics/char_pop_God.png "char pop, God Ranks")
 
