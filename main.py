@@ -3,7 +3,7 @@ import os
 from transform import Transformer
 from plot import Plot
 from ingestion import Extractor
-from datetime import datetime
+from datetime import datetime, date, timedelta
 
 
 def main():
@@ -182,29 +182,34 @@ def main():
     
     print("plotting and saving the output...")
     
-    pl.plot_data(most_pop_data, playable_char_map, unused_idxs, 
-                 f"Ranked Charactar Popularity Data % (all ranks), no. of replays: {sum(most_pop_data) // 2}", "./pics/char_pop_all", percentage=True)
+    base_out_path = "./pics/20"+datetime.strftime(datetime.now() - timedelta(days=30), "%y-%m-%d")+"-TO-"+str(date.today())
+    if not os.path.exists(base_out_path):
+        os.makedirs(base_out_path)
+    base_out_path = base_out_path+"/"
     
-    pl.plot_rank_data(rank_data, rank_mapping, "./pics/rank_dist", True)
+    pl.plot_data(most_pop_data, playable_char_map, unused_idxs, 
+                 f"Ranked Charactar Popularity Data % (all ranks), no. of replays: {sum(most_pop_data) // 2}", base_out_path+"char_pop_all", percentage=True)
+    
+    pl.plot_rank_data(rank_data, rank_mapping, base_out_path+"rank_dist", True)
     
     pl.plot_char_winrates(char_usage_all_ranks, char_wins_all_ranks, unused_idxs, playable_char_map,
-                          f"character winrate % sorted high to low, all ranks, data length: {sum(char_usage_all_ranks) // 2}", "./pics/char_winrate_all", True)
+                          f"character winrate % sorted high to low, all ranks, data length: {sum(char_usage_all_ranks) // 2}", base_out_path+"char_winrate_all", True)
     
     pl.plot_data(most_pop_fujin_onwards, playable_char_map, unused_idxs, 
-                 f"Ranked Charactar Popularity %, Fujin to Tekken Emperor, data length: {sum(most_pop_fujin_onwards) // 2}", "./pics/char_pop_fujin", True)
+                 f"Ranked Charactar Popularity %, Fujin to Tekken Emperor, data length: {sum(most_pop_fujin_onwards) // 2}", base_out_path+"char_pop_fujin", True)
     
     pl.plot_char_winrates(char_usage_Fujin_onwards, char_wins_Fujin_onwards, unused_idxs, playable_char_map, 
-                          f"Global winrate %, Fujin to Tekken Emperor, data length: {sum(char_usage_Fujin_onwards) // 2}", "./pics/char_win_fujin", True)
+                          f"Global winrate %, Fujin to Tekken Emperor, data length: {sum(char_usage_Fujin_onwards) // 2}", base_out_path+"char_win_fujin", True)
     
     pl.plot_data(most_pop_god_ranks, playable_char_map, unused_idxs, 
-                 f"Ranked Charactar Popularity %, God Ranks, data length: {sum(most_pop_god_ranks) // 2}", "./pics/char_pop_God", True)
+                 f"Ranked Charactar Popularity %, God Ranks, data length: {sum(most_pop_god_ranks) // 2}", base_out_path+"char_pop_God", True)
     
     pl.plot_char_winrates(char_usage_god_ranks, char_wins_god_ranks, unused_idxs, playable_char_map, 
-                          f"God Ranks winrate %, total data: {sum(char_usage_god_ranks) // 2}", "./pics/char_win_god", True)
+                          f"God Ranks winrate %, total data: {sum(char_usage_god_ranks) // 2}", base_out_path+"char_win_god", True)
     
-    pl.plot_heatmap(matchup_winrates, playable_char_map, unused_idxs, "./pics/heatmap_all", "character head to head win rates, all ranks")
-    pl.plot_heatmap(matchup_winrates_fujin, playable_char_map, unused_idxs, "./pics/heatmap_fujin", "character head to head win rates, Fujin to Tekken Emperor")
-    pl.plot_heatmap(matchup_winrates_god_ranks, playable_char_map, unused_idxs, "./pics/heatmap_god", "character head to head win rates, God ranks")
+    pl.plot_heatmap(matchup_winrates, playable_char_map, unused_idxs, base_out_path+"heatmap_all", "character head to head win rates, all ranks")
+    pl.plot_heatmap(matchup_winrates_fujin, playable_char_map, unused_idxs, base_out_path+"heatmap_fujin", "character head to head win rates, Fujin to Tekken Emperor")
+    pl.plot_heatmap(matchup_winrates_god_ranks, playable_char_map, unused_idxs, base_out_path+"heatmap_god", "character head to head win rates, God ranks")
     
     update_timer = datetime.now()
     print(f"updating local enteries... {update_timer}")

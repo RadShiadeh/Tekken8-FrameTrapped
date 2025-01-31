@@ -1,15 +1,15 @@
-## Tekken 8 ranked matches replay stats -- November 8th to December 8th 2024
+## Tekken 8 replay stats -- Jan 17th to Jan 31st
 
-Collected ranked replay data from "WAVU WANK" api: https://wank.wavu.wiki/api
+Wrote some code to collect ranked replay data from "wavu wank" api: https://wank.wavu.wiki/api
 
-**There are 13,481,323 replay data, with 344,144 players who have played at least one game of ranked**:
-- Replays are from November 8th to December 8th 2024
+**There are over 5 million replay data, with almost 250,000 players who have played at least one game of ranked**:
+- Ranked replays from Jan 14th to Jan 31st
 - Ranked matches only
 
 **Data is put into 3 categories**:
 - All ranks
 - Fujin to Tekken Emperor
-- Tekken God to God of Destruction (God ranks)
+- God ranks (Tekken King to max rank)
 
 **The images have the following for all of the categories above**:
 - Character popularity
@@ -18,9 +18,9 @@ Collected ranked replay data from "WAVU WANK" api: https://wank.wavu.wiki/api
 
 
 **Rank distribution**: 
-- showcasing where most matches are being played (note that this does not mean most people are ranked there.... it indicates where ranked matches are being played)
+- showcasing where most matches are being played (note that this does not mean most people are ranked there.... it indicates where matches are being played)
 
-![replay distribution](./pics/Rank_dist.png "character popularity, all ranks")
+![replay distribution](./pics/rank_dist.png "character popularity, all ranks")
 
 
 **Character popularity**
@@ -28,7 +28,7 @@ Collected ranked replay data from "WAVU WANK" api: https://wank.wavu.wiki/api
 
 ![All Ranks](./pics/char_pop_all.png "character popularity, all ranks")
 
-![Fujin to Emperor](./pics/char_pop_fujin.png "char pop, Fujin to Emperor")
+![Fujin to Emperor](./pics/char_pop_Fujin.png "char pop, Fujin to Emperor")
 
 ![God Ranks](./pics/char_pop_God.png "char pop, God Ranks")
 
@@ -45,7 +45,7 @@ Collected ranked replay data from "WAVU WANK" api: https://wank.wavu.wiki/api
 
 **Character head to head heatmap**
 - The character on the left is the winner
-- Example: Paul on the left and Law on the bottom with grid value x -> "Paul wins x % of matches against Law"
+- Example: Paul on the left and Law on the bottom with grid value x -> "Paul wins x% of matches against Law"
 
 
 ![All Ranks](./pics/heatmap_all.png "character head to heads, all ranks")

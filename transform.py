@@ -80,7 +80,9 @@ class Transformer():
                 if idx == i:
                     matchup_winrates[idx - off][i - off_i] = 50
                 else:
-                    wr = (wins[i] / apps[i]) * 100
+                    wr = 0
+                    if apps[i] > 0:
+                        wr = (wins[i] / apps[i]) * 100
                     matchup_winrates[idx - off][i - off_i] = wr
         
         
