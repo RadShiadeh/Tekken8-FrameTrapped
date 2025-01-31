@@ -20,7 +20,7 @@ Wrote some code to collect ranked replay data from "wavu wank" api: https://wank
 **Rank distribution**: 
 - showcasing where most matches are being played (note that this does not mean most people are ranked there.... it indicates where matches are being played)
 
-![replay distribution](./pics/rank_dist.png "character popularity, all ranks")
+![replay distribution](./pics/Rank_dist.png "character popularity, all ranks")
 
 
 **Character popularity**
